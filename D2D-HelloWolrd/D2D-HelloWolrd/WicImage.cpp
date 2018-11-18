@@ -39,6 +39,7 @@ HRESULT LoadBitmapFromFile(
 	CComPtr<IWICFormatConverter> pConverter;
 	CComPtr<IWICBitmapScaler> pScaler;
 
+
 	hr = pIWICFactory->CreateDecoderFromFilename(
 		uri,
 		NULL,

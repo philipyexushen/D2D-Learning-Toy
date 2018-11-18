@@ -308,7 +308,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR, int nCmdShow)
 
 	g_Hwnd = CreateWindowEx(NULL,
 		"Direct2D", // window class name
-		"Draw Rectangle", // window caption
+		"Draw Image", // window caption
 		WS_OVERLAPPEDWINDOW, // window style
 		CW_USEDEFAULT, // initial x position
 		CW_USEDEFAULT, // initial y position
