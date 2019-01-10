@@ -205,14 +205,21 @@ void DrawBitmap()
 	D2D1_POINT_2F upperLeftCorner = D2D1::Point2F(0.f, 0.f);
 
 	// Draw bitmap
-	g_spRenderTarget->DrawBitmap(
-		g_spImage,
-		D2D1::RectF(
-			upperLeftCorner.x,
-			upperLeftCorner.y,
-			upperLeftCorner.x + size.width,
-			upperLeftCorner.y + size.height)
-	);
+// 	g_spRenderTarget->DrawBitmap(
+// 		g_spImage,
+// 		D2D1::RectF(upperLeftCorner.x, upperLeftCorner.y, upperLeftCorner.x + 100, upperLeftCorner.y + 100),
+// 		1.0f,
+// 		D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, 
+// 		D2D1::RectF(upperLeftCorner.x, upperLeftCorner.y, upperLeftCorner.x + size.width, upperLeftCorner.y + size.height)
+// 	);
+
+	CComPtr< ID2D1BitmapBrush> spBrush;
+	g_spRenderTarget->CreateBitmapBrush(g_spImage, &spBrush);
+	spBrush->SetTransform(D2D1::Matrix3x2F::Scale(0.5f, 0.5f));
+	g_spRenderTarget->FillRoundedRectangle(
+		D2D1::RoundedRect(D2D1::RectF(upperLeftCorner.x, upperLeftCorner.y, upperLeftCorner.x + size.width*0.5f, upperLeftCorner.y + size.height*0.5f), 2,2),
+		spBrush);
+
 
 	g_spRenderTarget->EndDraw();
 }
